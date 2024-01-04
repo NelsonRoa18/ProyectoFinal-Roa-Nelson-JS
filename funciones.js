@@ -100,7 +100,6 @@ function cargarHoraTurno() {
 }
 
 
-
 function llenarDia() {
 
     let now = DateTime.now();
@@ -115,11 +114,11 @@ function llenarDia() {
         dia = "0" + dia;
     }
 
-    let fechaActual = anio + "-" + mes + "-" + dia;
+    fechaActual = anio + "-" + mes + "-" + dia;
 
     fechaInput.value = fechaActual;
-
 }
+
 /// funcion de los botones salir, oculto y muestro contenido de la pagina
 function salir() {
 
@@ -183,6 +182,7 @@ function muestraInputYBoton() {
 
     llenarDia();
 }
+
 
 /// funcion para mostrar el formulario en pacientes
 function muestraFormPacientes() {
@@ -251,53 +251,68 @@ async function reservarTurno(e) {
         console.log(horaInput);
         function validarCampos() {
 
+
             nombreInput !== '' && apellidoInput !== '' && edadInput !== '' && dniInput !== '' && fechaInput !== '' && horaInput !== '' && agregarTurno(paciente, especialista, consultorio, fechaInput, horas[horaInput]);
-            
+
         }
-        
-        if (nombreInput !== '' && apellidoInput !== '' && edadInput !== '' && dniInput !== '' && fechaInput !== '' && horaInput !== '') {
-            Swal.fire({
-                title: '¿Desea confirmar el turno?',
-                icon: 'info',
-                showCancelButton: true,
-                confirmButtonText: 'Aceptar',
-                confirmButtonColor: '#0d6efd',
-            }).then((result) => {
-    
-                console.log(result);
-    
-                if (result.isConfirmed) {
-    
-    
-                    validarCampos();
-                    cargarTurnosEnLocalStorage();
-    
-                    Toastify({
-                        text: "Turno reservado con exito!",
-                        duration: 3000,
-                        close: true,
-                        gravity: "bottom", // `top` or `bottom`
-                        position: "right", // `left`, `center` or `right`
-                        stopOnFocus: true, // Prevents dismissing of toast on hover
-                        style: {
-                            background: "linear-gradient(to right, #16F0F5, #0d6efd)",
-                        },
-                    }).showToast();
-    
-                    limpiarFormulario(formPaciente);
-    
-                }
-    
-            })
-        }else {
-            Swal.fire({
-                title: 'Error!',
-                text: 'No completo todos los campos',
-                icon: 'error',
-                confirmButtonText: 'Aceptar',
-                confirmButtonColor: '#0d6efd',
-            })
+        if (fechaInput > fechaActual) {
+            if (nombreInput !== '' && apellidoInput !== '' && edadInput !== '' && dniInput !== '' && fechaInput !== '' && horaInput !== '') {
+                Swal.fire({
+                    title: '¿Desea confirmar el turno?',
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonText: 'Aceptar',
+                    confirmButtonColor: '#0d6efd',
+                }).then((result) => {
+
+                    console.log(result);
+
+                    if (result.isConfirmed) {
+
+
+                        validarCampos();
+                        cargarTurnosEnLocalStorage();
+
+                        Toastify({
+                            text: "Turno reservado con exito!",
+                            duration: 3000,
+                            close: true,
+                            gravity: "bottom", // `top` or `bottom`
+                            position: "right", // `left`, `center` or `right`
+                            stopOnFocus: true, // Prevents dismissing of toast on hover
+                            style: {
+                                background: "linear-gradient(to right, #16F0F5, #0d6efd)",
+                            },
+                        }).showToast();
+
+                        limpiarFormulario(formPaciente);
+
+                    }
+
+                })
+            } else {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'No completo todos los campos',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar',
+                    confirmButtonColor: '#0d6efd',
+                })
+            }
+        } else {
+            Toastify({
+                text: "La fecha debe ser superior o igual a la actual",
+                duration: 3000,
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "linear-gradient(to right, red, red)",
+                },
+            }).showToast();
         }
+
 
     }
     //este metodo no me sirve para lo que necesito hacer ahora tengo que cambiarlo
@@ -331,7 +346,7 @@ function llenarTabla(array, id) {
 
 };
 
-function vaciarTabla (id) {
+function vaciarTabla(id) {
     const bodyTabla = document.getElementById(id);
     bodyTabla.innerHTML = ' ';
 }
@@ -355,7 +370,7 @@ function filtrar() {
 
     if (valor == 0) {
         console.log('No eligio ningun especialista');
-        
+
         Swal.fire({
             title: 'Error!',
             text: 'No eligio ningun especialista',
@@ -366,12 +381,12 @@ function filtrar() {
 
         vaciarTabla('turnos__filtrados');
         /// VACIAR TABLA DE FILTRADO
-        
+
         return -1;
     } else {
         /// verifico que el array nuevo no este vacio
         if (resultadoDelFiltradoDeTurnos.length === 0) {
-            
+
             console.log('Este especialista no tiene turnos');
             Swal.fire({
                 title: 'Error!',
@@ -412,13 +427,13 @@ function getRandomIntInclusive(min, max) {
 
 const url = 'https://open-weather13.p.rapidapi.com/city/landon';
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '862593dbd8msh7d1c55aecf547b1p1fdbddjsnc2f90997034c',
-		'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-	}
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': '862593dbd8msh7d1c55aecf547b1p1fdbddjsnc2f90997034c',
+        'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+    }
 };
-async function clima(){
+async function clima() {
     try {
         const response = await fetch(url, options);
         const result = await response.text();

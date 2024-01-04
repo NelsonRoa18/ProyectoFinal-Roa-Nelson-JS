@@ -14,6 +14,8 @@ let turnos = [];
 /// Declaro un array vacio para cargarlo con las horas
 let horas = [];
 
+let fechaActual = "";
+
 /// Obtengo todos los elementos que usare en el programa
 const btnadministrador = document.getElementById('administrador');
 
