@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "tipo" : "Medico Clinico"
+    },
+    {
+        "id": 2,
+        "tipo": "Traumatologo"
+    },
+    {
+        "id": 3,
+        "tipo": "Psicologo"
+    },
+    {
+        "id": 4,
+        "tipo" : "Dermatologo"
+    },
+    {
+        "id": 5,
+        "tipo": "Ginecologo"
+    }
+]

@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-    <title>Consultorio Piculi</title>
+    <title>Consultorio Fragas</title>
 </head>
 
 <body>
@@ -54,16 +54,14 @@
                                 <th>Nombre</th>
                                 <th>Especialista</th>
                                 <th>Consultorio</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
                             </tr>
                         </thead>
                         <tbody id="turnos" class="table-striped text-center">
 
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th id="total"></th>
-                            </tr>
-                        </tfoot>
+
                     </table>
 
 
@@ -89,15 +87,12 @@
                             <th>Nombre</th>
                             <th>Especialista</th>
                             <th>Consultorio</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
                         </tr>
                     </thead>
                     <tbody id="turnos__filtrados" class="table-striped text-center">
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th id="total"></th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
             <div class="col-md-8 hide" id="div__input__pacientes">
@@ -111,19 +106,19 @@
                 <div class="mb-3">
                     <form class="hide" id="form__paciente">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="nombre__input" placeholder="Nombre">
+                            <input type="text" class="form-control" id="nombre__input" placeholder="Nombre" required>
                             <label for="nombre__input">Nombre </label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="apellido__input" placeholder="Apellido">
+                            <input type="text" class="form-control" id="apellido__input" placeholder="Apellido" required>
                             <label for="apellido__input">Apellido</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="edad__input" placeholder="Edad">
+                            <input type="number" class="form-control" id="edad__input" placeholder="Edad" required>
                             <label for="edad__input">Edad</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="dni__input" placeholder="Dni">
+                            <input type="number" class="form-control" id="dni__input" placeholder="Dni" required>
                             <label for="dni__input">Dni</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -135,7 +130,7 @@
                                 <option value="0"> Elija una hora... </option>
                             </select>
                         </div>
-
+ 
 
                         <button class="btn btn-primary" type="submit" id="btn__turno">Reservar Turno</button>
                     </form>

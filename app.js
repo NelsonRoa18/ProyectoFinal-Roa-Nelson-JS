@@ -11,6 +11,8 @@ let pacientes = JSON.parse(localStorage.getItem('Pacientes'));
 
 /// Declaro un array vacio para poder guardar los turnos
 let turnos = [];
+/// Declaro un array vacio para cargarlo con las horas
+let horas = [];
 
 /// Obtengo todos los elementos que usare en el programa
 const btnadministrador = document.getElementById('administrador');
@@ -49,8 +51,6 @@ const buscarTurnosDelEspecialista = document.getElementById('especialista__a__fi
 
 
 
-
-btnadministrador.addEventListener("click", cargarEspecialistas(especialistas, 'especialista__a__filtrar'));
 btnadministrador.addEventListener("click", muestraTablaYBoton);
 btnadministrador.addEventListener("click", ocultaBoton);
 
@@ -70,4 +70,8 @@ buscarTurnosDelEspecialista.addEventListener("change", filtrar);
 
 btnsalir.addEventListener("click", salir);
 
+
+
+obtenerEspecialistas();
+traerTurnos();
 

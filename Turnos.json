@@ -1,0 +1,61 @@
+[{
+    "id": 1,
+    "paciente": {
+        "apellido": "Pirulin",
+        "dni": "14578795",
+        "edad": "23",
+        "nombre": "Jose"},
+    "especialista": "Medico Clinico",
+    "consultorio": 4,
+    "fecha": "2024-01-28",
+    "hora": "15:30"
+},
+{
+    "id": 2,
+    "paciente": {
+        "apellido": "Melud",
+        "dni": "24678957",
+        "edad": "23",
+        "nombre": "Alberto"},
+    "especialista": "Medico Clinico",
+    "consultorio": 6,
+    "fecha": "2024-01-10",
+    "hora": "11:30"
+},
+{
+    "id": 3,
+    "paciente": {
+        "apellido": "Ludovica",
+        "dni": "37578687",
+        "edad": "23",
+        "nombre": "Martin"},
+    "especialista": "Psicologo",
+    "consultorio": 1,
+    "fecha": "2024-01-09",
+    "hora": "8:30"
+},
+{
+    "id": 4,
+    "paciente": {
+        "apellido": "Esperanza",
+        "dni": "14579174",
+        "edad": "23",
+        "nombre": "Blanca"},
+    "especialista": "Traumatologo",
+    "consultorio": 2,
+    "fecha": "2024-01-18",
+    "hora": "15:00"
+},
+{
+    "id": 5,
+    "paciente": {
+        "apellido": "Paz",
+        "dni": "92579432",
+        "edad": "23",
+        "nombre": "Azul"},
+    "especialista": "Ginecologia",
+    "consultorio": 3,
+    "fecha": "2024-02-20",
+    "hora": "13:00"
+}
+]
