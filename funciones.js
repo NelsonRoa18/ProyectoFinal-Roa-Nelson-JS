@@ -331,6 +331,11 @@ function llenarTabla(array, id) {
 
 };
 
+function vaciarTabla (id) {
+    const bodyTabla = document.getElementById(id);
+    bodyTabla.innerHTML = ' ';
+}
+
 /// funcion para filtrar por especialista medico
 function filtrar() {
 
@@ -359,6 +364,7 @@ function filtrar() {
             confirmButtonColor: '#0d6efd',
         })
 
+        vaciarTabla('turnos__filtrados');
         /// VACIAR TABLA DE FILTRADO
         
         return -1;
@@ -374,7 +380,7 @@ function filtrar() {
                 confirmButtonText: 'Aceptar',
                 confirmButtonColor: '#0d6efd',
             })
-            
+            vaciarTabla('turnos__filtrados');
         } else {
 
             resultadoDelFiltradoDeTurnos.forEach(turno => {
@@ -404,3 +410,22 @@ function getRandomIntInclusive(min, max) {
 
 
 
+const url = 'https://open-weather13.p.rapidapi.com/city/landon';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '862593dbd8msh7d1c55aecf547b1p1fdbddjsnc2f90997034c',
+		'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+	}
+};
+async function clima(){
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+clima();
