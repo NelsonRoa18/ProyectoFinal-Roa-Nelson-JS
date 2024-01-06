@@ -1,4 +1,4 @@
-// funcion para traer turnos desde el localstorage a la pagina
+// funcion para traer turnos desde el json a la pagina
 function obtenerEspecialistas() {
     fetch("./Especialistas.json")
         .then((response) => {
@@ -14,9 +14,7 @@ function obtenerEspecialistas() {
         });
 }
 
-
-
-
+// funcino para traer turnos del localStorage
 function traerTurnos() {
 
     turnosLocalStorage = JSON.parse(localStorage.getItem('Turnos'));
@@ -117,6 +115,8 @@ function llenarDia() {
     fechaActual = anio + "-" + mes + "-" + dia;
 
     fechaInput.value = fechaActual;
+
+
 }
 
 /// funcion de los botones salir, oculto y muestro contenido de la pagina
@@ -125,11 +125,11 @@ function salir() {
     divBotones.classList.remove('col-md-3');
     divBotones.classList.add('col-md-12');
 
-    btnadministrador.classList.add('btn', 'btn-primary');
-    btnpaciente.classList.add('btn', 'btn-primary');
+    btnAdministrador.classList.add('btn', 'btn-primary');
+    btnPaciente.classList.add('btn', 'btn-primary');
 
-    btnadministrador.classList.remove('hide');
-    btnpaciente.classList.remove('hide');
+    btnAdministrador.classList.remove('hide');
+    btnPaciente.classList.remove('hide');
 
     tabla.classList.add('hide');
 
@@ -148,7 +148,10 @@ function salir() {
 
     formPaciente.classList.add('hide');
 
+    btnSalir.classList.add('hide');
+    btnSalir.classList.remove('btn', 'btn-primary');
 
+    limpiarFormulario(formPaciente);
 }
 
 /// funcion para mostrar la tabla y botones de administrador
@@ -158,6 +161,9 @@ function muestraTablaYBoton() {
     divBotones.classList.add('col-md-3');
 
     tabla.classList.remove('hide');
+
+    btnSalir.classList.remove('hide');
+    btnSalir.classList.add('btn', 'btn-primary');
 
     preguntaUsuario.classList.add('hide');
 
@@ -180,6 +186,10 @@ function muestraInputYBoton() {
 
     divInputPacientes.classList.remove('hide');
 
+    btnSalir.classList.remove('hide');
+    btnSalir.classList.add('btn', 'btn-primary');
+
+
     llenarDia();
 }
 
@@ -199,11 +209,11 @@ function muestraFormPacientes() {
 /// funcion que oculta el boton no seleccionado
 function ocultaBoton() {
 
-    btnpaciente.classList.remove('btn', 'btn-primary');
-    btnpaciente.classList.add('hide');
+    btnPaciente.classList.remove('btn', 'btn-primary');
+    btnPaciente.classList.add('hide');
 
-    btnadministrador.classList.remove('btn', 'btn-primary');
-    btnadministrador.classList.add('hide');
+    btnAdministrador.classList.remove('btn', 'btn-primary');
+    btnAdministrador.classList.add('hide');
 
 }
 
@@ -221,6 +231,11 @@ async function reservarTurno(e) {
     const fechaInput = document.getElementById('fecha__input').value;
     const horaInput = selectHoraTurno.options[selectHoraTurno.selectedIndex].value
 
+    let now = DateTime.now();
+    let hora = now.hour;
+    let minutos = now.minute;
+
+    let horaActual = hora + ":" + minutos;
 
     e.preventDefault();
     const response = await fetch("./Especialistas.json");
@@ -239,7 +254,7 @@ async function reservarTurno(e) {
 
         }
 
-        consultorio = getRandomIntInclusive(1, 6);
+        consultorio = generarNumeroRandom(1, 6);
 
         especialistas.forEach(element => {
             if (element.id == valor) {
@@ -255,6 +270,7 @@ async function reservarTurno(e) {
             nombreInput !== '' && apellidoInput !== '' && edadInput !== '' && dniInput !== '' && fechaInput !== '' && horaInput !== '' && agregarTurno(paciente, especialista, consultorio, fechaInput, horas[horaInput]);
 
         }
+
         if (fechaInput > fechaActual) {
             if (nombreInput !== '' && apellidoInput !== '' && edadInput !== '' && dniInput !== '' && fechaInput !== '' && horaInput !== '') {
                 Swal.fire({
@@ -301,7 +317,7 @@ async function reservarTurno(e) {
             }
         } else {
             Toastify({
-                text: "La fecha debe ser superior o igual a la actual",
+                text: "La fecha debe ser superior a la actual",
                 duration: 3000,
                 close: true,
                 gravity: "bottom", // `top` or `bottom`
@@ -312,6 +328,7 @@ async function reservarTurno(e) {
                 },
             }).showToast();
         }
+
 
 
     }
@@ -417,30 +434,9 @@ function limpiarFormulario(formulario) {
 };
 
 // funcino que Me genera un numero aleatorio entre 1 y 6
-function getRandomIntInclusive(min, max) {
+function generarNumeroRandom(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-
-
-const url = 'https://open-weather13.p.rapidapi.com/city/landon';
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': '862593dbd8msh7d1c55aecf547b1p1fdbddjsnc2f90997034c',
-        'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-    }
-};
-async function clima() {
-    try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-clima();

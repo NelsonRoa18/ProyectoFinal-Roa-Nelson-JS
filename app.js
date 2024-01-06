@@ -6,22 +6,22 @@ $(document).ready(function () {
 var DateTime = luxon.DateTime;
 
 
-
+///Variable donde guardo los pacientes puestos en el localstorage
 let pacientes = JSON.parse(localStorage.getItem('Pacientes'));
 
 /// Declaro un array vacio para poder guardar los turnos
 let turnos = [];
 /// Declaro un array vacio para cargarlo con las horas
 let horas = [];
-
+/// Declaro una varaible para poder comparar luego 
 let fechaActual = "";
-
+let horaActual = "";
 /// Obtengo todos los elementos que usare en el programa
-const btnadministrador = document.getElementById('administrador');
+const btnAdministrador = document.getElementById('administrador');
 
-const btnpaciente = document.getElementById('paciente');
+const btnPaciente = document.getElementById('paciente');
 
-const btnsalir = document.getElementById('salir')
+const btnSalir = document.getElementById('salir')
 
 const divBotones = document.getElementById('botones');
 
@@ -53,14 +53,14 @@ const buscarTurnosDelEspecialista = document.getElementById('especialista__a__fi
 
 
 
-btnadministrador.addEventListener("click", muestraTablaYBoton);
-btnadministrador.addEventListener("click", ocultaBoton);
+btnAdministrador.addEventListener("click", muestraTablaYBoton);
+btnAdministrador.addEventListener("click", ocultaBoton);
 
 
-btnadministrador.addEventListener("click", traerTurnos);
+btnAdministrador.addEventListener("click", traerTurnos);
 
-btnpaciente.addEventListener("click", muestraInputYBoton);
-btnpaciente.addEventListener("click", ocultaBoton);
+btnPaciente.addEventListener("click", muestraInputYBoton);
+btnPaciente.addEventListener("click", ocultaBoton);
 
 
 
@@ -70,7 +70,7 @@ formPaciente.addEventListener("submit", reservarTurno);
 
 buscarTurnosDelEspecialista.addEventListener("change", filtrar);
 
-btnsalir.addEventListener("click", salir);
+btnSalir.addEventListener("click", salir);
 
 
 
