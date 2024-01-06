@@ -119,6 +119,7 @@ function llenarDia() {
 
 }
 
+
 /// funcion de los botones salir, oculto y muestro contenido de la pagina
 function salir() {
 
@@ -142,9 +143,10 @@ function salir() {
     tituloBienvenidaAdministrador.classList.add('hide');
 
     tituloBienvenidaPaciente.classList.add('hide');
-
-    let preguntaUsuario = document.getElementById('pregunta__a__usuario');
+    
     preguntaUsuario.classList.remove('hide');
+
+    cantPacientes.classList.add('hide');
 
     formPaciente.classList.add('hide');
 
@@ -156,6 +158,7 @@ function salir() {
 
 /// funcion para mostrar la tabla y botones de administrador
 function muestraTablaYBoton() {
+    
 
     divBotones.classList.remove('col-md-12');
     divBotones.classList.add('col-md-3');
@@ -169,8 +172,23 @@ function muestraTablaYBoton() {
 
     tituloBienvenidaAdministrador.classList.remove('hide');
 
+    cantPacientes.classList.remove('hide');
+    let msjTabla = document.getElementById('titulo__turnos');
+
+    if (turnos.length > 0) {
+        cantPacientes.textContent = `La cantidad de pacientes es: ${turnos.length}`;
+        msjTabla.textContent = 'Estos son los turnos agendados'
+    }else{
+        
+        msjTabla.textContent = 'No tenemos turnos por el momento';
+    }
+    
+    
 
 }
+
+
+
 
 /// funcion para mostrar inputs y boton de reservar turno en pacientes
 function muestraInputYBoton() {
@@ -344,6 +362,7 @@ async function reservarTurno(e) {
 function llenarTabla(array, id) {
 
     const bodyTabla = document.getElementById(id);
+
     bodyTabla.innerHTML = ' ';
 
     array.forEach((turno, index) => {
@@ -357,9 +376,9 @@ function llenarTabla(array, id) {
                 <td>${turno.hora}</td>
             </tr>
             `
-
+            
     });
-
+    
 
 };
 

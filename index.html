@@ -42,11 +42,14 @@
                     <button class="hide" type="button" id="salir">Salir</button>
 
                 </div>
+                <div id="cant__pacientes">
+                    <h5 class="text-center" id="cant__de__pacientes"></h5>
+                </div>
             </div>
 
             <div class="col-md-8 hide" id="div__contenedor__tabla">
                 <div id="contenedor-tabla" class="container">
-                    <h3 class="text-center"> Estos son los turnos agendados </h3>
+                    <h3 class="text-center" id="titulo__turnos"></h3>
                     <table class="table table-dark text-center" id="tabla__de__turnos">
                         <thead class="thead-dark">
                             <tr id="trId">
@@ -63,14 +66,8 @@
                         </tbody>
 
                     </table>
-
-
                     <h2 id="" class="text-center"> Filtrar por especialista</h2>
 
-                    <div class="mb-3">
-                        <label class="text-center" for="filtrado"> Ingrese el especialista por el cual desea
-                            filtrar</label>
-                    </div>
                     <div class="mb-3">
                         <select class="form-select" aria-label="Default select example" for="filtrado"
                             id="especialista__a__filtrar">
@@ -110,7 +107,8 @@
                             <label for="nombre__input">Nombre </label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="apellido__input" placeholder="Apellido" required>
+                            <input type="text" class="form-control" id="apellido__input" placeholder="Apellido"
+                                required>
                             <label for="apellido__input">Apellido</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -130,7 +128,7 @@
                                 <option value="0"> Elija una hora... </option>
                             </select>
                         </div>
- 
+
 
                         <button class="btn btn-primary" type="submit" id="btn__turno">Reservar Turno</button>
                     </form>

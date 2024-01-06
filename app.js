@@ -49,11 +49,14 @@ const btnReservarTurno = document.getElementById('btn__turno');
 
 const buscarTurnosDelEspecialista = document.getElementById('especialista__a__filtrar');
 
+const cantPacientes = document.getElementById('cant__de__pacientes');
 
+const divCantPacientes = document.getElementById('cant__pacientes');
 
 
 
 btnAdministrador.addEventListener("click", muestraTablaYBoton);
+
 btnAdministrador.addEventListener("click", ocultaBoton);
 
 
@@ -70,9 +73,11 @@ formPaciente.addEventListener("submit", reservarTurno);
 
 buscarTurnosDelEspecialista.addEventListener("change", filtrar);
 
+
+
+
+
 btnSalir.addEventListener("click", salir);
-
-
 
 obtenerEspecialistas();
 traerTurnos();
